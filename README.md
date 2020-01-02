@@ -5,7 +5,7 @@ LPC is a local http service that enables proxying and cache outgoing requests. I
 # How to use
 Run following command:
 ```sh
-    $ npx lpc <PARAMETERS>
+    $ npx lpc@latest --hostname=<HOSTNAME>
 ```
 
 # Command Line Help / Parameters
@@ -13,6 +13,8 @@ Run following command to get a list of available parameters:
 ```sh
     $ npx lpc --help
 ```
+
+Note: As per version 1.0.5, the only required parameter is hostname
 
 ### Requirements
 lpc requires [Node.js](https://nodejs.org/) v10+ to run.

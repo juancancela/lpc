@@ -1,11 +1,11 @@
 {
     "name": "lpc",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "locally proxied cache",
     "main": "index.js",
     "scripts": {
         "start": "yarn install && node index.js",
-        "flush": "cd storage && rm *.*"
+        "flush": "cd /tmp/___storage && rm *.*"
     },
     "repository": {
         "type": "git",
@@ -24,8 +24,6 @@
         "colors": "^1.4.0",
         "commander": "^4.0.1",
         "express": "^4.17.1",
-        "express-http-proxy": "^1.6.0",
-        "http-proxy-middleware": "^0.20.0",
         "node-fetch": "^2.6.0"
     }
 }

@@ -14,23 +14,24 @@ const { promisify } = require('util')
 const writeFile = promisify(fs.writeFile)
 const app = express()
 const { log } = console
-const { readdirSync } = fs
+const { readdirSync, mkdirSync, existsSync } = fs
 
 const DEFAULT_PROTOCOL = 'https'
 const DEFAULT_PORT = 13376
-const STORAGE_FOLDER_NAME = 'storage'
-const STORAGE_FULL_PATH = require('path').join(__dirname, `/${STORAGE_FOLDER_NAME}`)
+const STORAGE_FULL_PATH = `/tmp/___storage/`
+
+if (!existsSync(STORAGE_FULL_PATH)) mkdirSync(STORAGE_FULL_PATH)
 
 program
+    .requiredOption('-hostname, --hostname <value>', 'hostname of proxied target')
     .option('-port, --port <number>', 'port to be used by lpc', DEFAULT_PORT)
     .option('-protocol, --protocol <http|https>', 'protocol of proxied target', DEFAULT_PROTOCOL)
-    .requiredOption('-hostname, --hostname <value>', 'hostname of proxied target')
 program.parse(process.argv)
 
 const encode = data => new Buffer(data).toString('base64')
 
 const isResourceCached = resourceFileName =>
-    readdirSync(`./${STORAGE_FOLDER_NAME}`).some(fileName => fileName.startsWith(resourceFileName))
+    readdirSync(`${STORAGE_FULL_PATH}`).some(fileName => fileName.startsWith(resourceFileName))
 
 const getResourceContentType = content => content.headers.get('content-type')
 
@@ -56,7 +57,7 @@ const getResourceUrlExtension = resourceUrl => {
 
 const cacheHitStrategy = (resourceFileName, resourceUrl, res) => {
     log(`[LPC][CACHE HIT] ${resourceUrl}`.bgGreen.brightWhite)
-    const fileName = readdirSync(`./${STORAGE_FOLDER_NAME}`).filter(fileName =>
+    const fileName = readdirSync(`${STORAGE_FULL_PATH}`).filter(fileName =>
         fileName.startsWith(resourceFileName)
     )[0]
     res.sendFile(`${STORAGE_FULL_PATH}/${fileName}`)

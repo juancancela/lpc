@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 /**
  *  LPC
  *  @author Juan Carlos Cancela <cancela.juancarlos@gmail.com>

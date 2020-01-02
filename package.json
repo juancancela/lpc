@@ -1,28 +1,31 @@
 {
-  "name": "lpc",
-  "version": "1.0.1",
-  "description": "locally proxied cache",
-  "main": "index.js",
-  "scripts": {
-    "start": "yarn install && node index.js",
-    "flush": "cd storage && rm *.*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/juancancela/lpc.git"
-  },
-  "author": "Juan Carlos Cancela <cancela.juancarlos@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/juancancela/lpc/issues"
-  },
-  "homepage": "https://github.com/juancancela/lpc#readme",
-  "dependencies": {
-    "colors": "^1.4.0",
-    "commander": "^4.0.1",
-    "express": "^4.17.1",
-    "express-http-proxy": "^1.6.0",
-    "http-proxy-middleware": "^0.20.0",
-    "node-fetch": "^2.6.0"
-  }
+    "name": "lpc",
+    "version": "1.0.2",
+    "description": "locally proxied cache",
+    "main": "index.js",
+    "scripts": {
+        "start": "yarn install && node index.js",
+        "flush": "cd storage && rm *.*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/juancancela/lpc.git"
+    },
+    "author": "Juan Carlos Cancela <cancela.juancarlos@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/juancancela/lpc/issues"
+    },
+    "bin": {
+        "lpc": "./index.js"
+    },
+    "homepage": "https://github.com/juancancela/lpc#readme",
+    "dependencies": {
+        "colors": "^1.4.0",
+        "commander": "^4.0.1",
+        "express": "^4.17.1",
+        "express-http-proxy": "^1.6.0",
+        "http-proxy-middleware": "^0.20.0",
+        "node-fetch": "^2.6.0"
+    }
 }
